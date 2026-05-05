@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Cyber Security & Dev</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg:     #0c0c0f;
+  --bg2:    #111115;
+  --bg3:    #18181d;
+  --bg4:    #1f1f26;
+  --line:   rgba(255,255,255,0.07);
+  --text:   #ededf0;
+  --muted:  rgba(237,237,240,0.45);
+  --hint:   rgba(237,237,240,0.18);
+  --accent: #7c6dfa;
+  --accent2:#a78bfa;
+  --green:  #34d399;
+  --red:    #f87171;
+  --amber:  #fbbf24;
+  --sans:   'DM Sans', sans-serif;
+  --disp:   'Syne', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem; height: 64px;
+  background: rgba(12,12,15,0.88); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.logo { font-family: var(--disp); font-weight: 800; font-size: 1.05rem; letter-spacing: -0.5px; }
+.logo em { font-style: normal; color: var(--accent2); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { background: var(--accent) !important; color: #fff !important; padding: 0.4rem 1.1rem; border-radius: 8px; }
+
+/* HERO */
+#hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 7rem 3rem 4rem; max-width: 1080px; margin: 0 auto; gap: 4rem;
+}
+.hero-left { flex: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(124,109,250,0.1); border: 1px solid rgba(124,109,250,0.25);
+  color: var(--accent2); font-size: 0.75rem; font-weight: 500;
+  padding: 0.3rem 0.85rem; border-radius: 100px; margin-bottom: 1.5rem;
+}
+.hero-badge::before {
+  content: ''; width: 6px; height: 6px; background: var(--green);
+  border-radius: 50%; animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+.hero-name {
+  font-family: var(--disp); font-size: clamp(2.6rem,5.5vw,4.2rem);
+  font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 1.2rem;
+}
+.hero-name .outline {
+  color: transparent; -webkit-text-stroke: 1.5px rgba(237,237,240,0.22);
+}
+.hero-desc { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 460px; margin-bottom: 2.5rem; }
+.hero-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--accent); color: #fff; padding: 0.7rem 1.6rem;
+  border-radius: 10px; font-weight: 600; font-size: 0.88rem;
+  box-shadow: 0 4px 20px rgba(124,109,250,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,109,250,0.4); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--bg3); color: var(--text); padding: 0.7rem 1.6rem;
+  border-radius: 10px; font-weight: 500; font-size: 0.88rem;
+  border: 1px solid var(--line); transition: background 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { background: var(--bg4); border-color: rgba(255,255,255,0.12); }
+
+/* PROFILE CARD */
+.profile-card {
+  width: 260px; flex-shrink: 0; background: var(--bg3);
+  border: 1px solid var(--line); border-radius: 20px; padding: 1.5rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+}
+.profile-avatar {
+  width: 76px; height: 76px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--disp); font-size: 1.7rem; font-weight: 800; color: #fff;
+}
+.profile-name { font-family: var(--disp); font-weight: 700; font-size: 0.95rem; text-align: center; }
+.profile-role { font-size: 0.75rem; color: var(--muted); text-align: center; }
+.profile-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; width: 100%; margin-top: 0.5rem; }
+.pstat { background: var(--bg4); border-radius: 10px; padding: 0.6rem 0; text-align: center; }
+.pstat-n { font-family: var(--disp); font-size: 1.1rem; font-weight: 700; display: block; }
+.pstat-l { font-size: 0.6rem; color: var(--muted); display: block; }
+
+/* SECTIONS */
+.sec { max-width: 1080px; margin: 0 auto; padding: 5rem 3rem; }
+.divider { height: 1px; background: var(--line); max-width: 1080px; margin: 0 auto; }
+.sec-tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--accent2); margin-bottom: 0.5rem; }
+.sec-title { font-family: var(--disp); font-size: clamp(1.7rem,2.8vw,2.2rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
+.sec-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.8rem; max-width: 480px; }
+
+/* CERTS */
+.grid-certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 1rem; }
+.cert-card {
+  background: var(--bg3); border: 1px solid var(--line); border-radius: 16px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+  text-decoration: none; color: inherit;
+}
+.cert-card:hover { border-color: rgba(124,109,250,0.4); transform: translateY(-3px); }
+.cert-img-wrap {
+  width: 100%; height: 160px; background: var(--bg4);
+  overflow: hidden; position: relative; flex-shrink: 0;
+}
+.cert-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.cert-card:hover .cert-img-wrap img { transform: scale(1.04); }
+.cert-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem; color: var(--hint); font-size: 0.75rem;
+}
+.cert-img-placeholder span { font-size: 2rem; }
+.cert-link-badge {
+  position: absolute; top: 0.6rem; right: 0.6rem;
+  background: rgba(124,109,250,0.85); backdrop-filter: blur(8px);
+  color: #fff; font-size: 0.62rem; font-weight: 600;
+  padding: 0.2rem 0.55rem; border-radius: 100px; letter-spacing: 0.5px;
+}
+.cert-body { padding: 1.1rem 1.3rem 1.3rem; flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
+.cert-name { font-family: var(--disp); font-size: 0.95rem; font-weight: 700; }
+.cert-org { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.3rem; }
+.cert-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.7rem; border-top: 1px solid var(--line); }
+.cert-link-text { font-size: 0.7rem; color: var(--accent2); display: flex; align-items: center; gap: 0.3rem; }
+.chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.chip { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 100px; font-size: 0.63rem; font-weight: 600; }
+.chip-g { background: rgba(52,211,153,0.1); color: var(--green); }
+.chip-p { background: rgba(167,139,250,0.1); color: var(--accent2); }
+.chip-y { background: rgba(251,191,36,0.1); color: var(--amber); }
+
+/* SKILLS */
+.skills-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.skill-box { background: var(--bg3); border: 1px solid var(--line); border-radius: 16px; padding: 1.7rem; }
+.skill-box-head { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.7rem; }
+.skill-box-ico { width: 34px; height: 34px; background: var(--bg4); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+.skill-box-title { font-family: var(--disp); font-size: 0.9rem; font-weight: 700; }
+.skill-row { margin-bottom: 1rem; }
+.skill-meta { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 0.35rem; }
+.skill-meta span:first-child { color: var(--muted); }
+.skill-meta span:last-child { color: var(--accent2); font-weight: 600; }
+.bar-bg { height: 3px; background: var(--bg4); border-radius: 100px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+/* HOF TABLE */
+.hof-wrap { background: var(--bg3); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.hof-table { width: 100%; border-collapse: collapse; }
+.hof-table thead tr { border-bottom: 1px solid var(--line); }
+.hof-table th { text-align: left; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--hint); padding: 1rem 1.2rem; }
+.hof-table td { padding: 0.85rem 1.2rem; font-size: 0.86rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.hof-table tr:last-child td { border-bottom: none; }
+.hof-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+.vtag { display: inline-block; padding: 0.18rem 0.6rem; border-radius: 6px; font-size: 0.7rem; font-weight: 600; }
+.v-crit { background: rgba(248,113,113,0.1); color: var(--red); }
+.v-high { background: rgba(251,191,36,0.1); color: var(--amber); }
+.v-med  { background: rgba(124,109,250,0.1); color: var(--accent2); }
+.sdot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+.sc { background: var(--red); }
+.sh { background: var(--amber); }
+.sm { background: var(--accent2); }
+
+/* ACHIEVEMENTS */
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 1rem; }
+.ach-card {
+  background: var(--bg3); border: 1px solid var(--line); border-radius: 14px;
+  padding: 1.4rem; transition: border-color 0.2s, transform 0.2s; cursor: default;
+}
+.ach-card:hover { border-color: rgba(255,255,255,0.13); transform: translateY(-2px); }
+.ach-emoji { font-size: 1.5rem; margin-bottom: 0.9rem; display: block; }
+.ach-title { font-family: var(--disp); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; }
+.ach-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+/* STACK */
+.stack-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pill {
+  display: flex; align-items: center; gap: 0.45rem;
+  background: var(--bg3); border: 1px solid var(--line); border-radius: 9px;
+  padding: 0.5rem 0.95rem; font-size: 0.83rem; font-weight: 500;
+  transition: background 0.2s, border-color 0.2s; cursor: default;
+}
+.pill:hover { background: var(--bg4); border-color: rgba(255,255,255,0.12); }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 0.8rem; }
+.contact-card {
+  display: flex; align-items: center; gap: 0.9rem;
+  background: var(--bg3); border: 1px solid var(--line); border-radius: 12px;
+  padding: 1rem 1.1rem; transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.contact-card:hover { border-color: rgba(124,109,250,0.35); background: rgba(124,109,250,0.05); transform: translateY(-2px); }
+.c-ico { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.ci-gh { background: rgba(255,255,255,0.05); }
+.ci-tg { background: rgba(41,182,246,0.08); }
+.ci-li { background: rgba(10,102,194,0.08); }
+.ci-ig { background: rgba(225,48,108,0.08); }
+.c-name { font-family: var(--disp); font-size: 0.82rem; font-weight: 700; display: block; }
+.c-handle { font-size: 0.72rem; color: var(--muted); display: block; }
+.c-arrow { color: var(--hint); margin-left: auto; font-size: 0.85rem; }
+
+footer { text-align: center; padding: 2rem; border-top: 1px solid var(--line); font-size: 0.78rem; color: var(--hint); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  #hero { flex-direction: column; padding: 5.5rem 1.5rem 3rem; gap: 2rem; }
+  .profile-card { width: 100%; }
+  .sec { padding: 4rem 1.5rem; }
+  .skills-wrap { grid-template-columns: 1fr; }
+  .hof-table th:nth-child(4), .hof-table td:nth-child(4) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">your<em>.</em>name</div>
+  <div class="nav-links">
+    <a href="#certs">Sertifikatlar</a>
+    <a href="#skills">Skills</a>
+    <a href="#hof">Hall of Fame</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact" class="nav-cta">Bog'lanish</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Ishga tayyor &nbsp;·&nbsp; Toshkent, UZ</div>
+    <h1 class="hero-name">
+      Cyber Security<br>
+      <span class="outline">&amp; Developer</span>
+    </h1>
+    <p class="hero-desc">
+      Web Penetration Testing va Game Cheating mutaxassisi. Python, C++, JavaScript bilan zaifliklarni topaman va tuzataman. Bug Bounty va CTF da tajribali.
+    </p>
+    <div class="hero-btns">
+      <a href="#hof" class="btn-primary">Hall of Fame →</a>
+      <a href="#contact" class="btn-ghost">Bog'lanish</a>
+    </div>
+  </div>
+  <div class="profile-card">
+    <div class="profile-avatar">YN</div>
+    <div class="profile-name">Abdivasiyev Sunnatillo Azizovich</div>
+    <div class="profile-role">Security Researcher · Developer</div>
+    <div class="profile-stats">
+      <div class="pstat"><span class="pstat-n">2+</span><span class="pstat-l">Certs</span></div>
+      <div class="pstat"><span class="pstat-n">20+</span><span class="pstat-l">Bugs</span></div>
+      <div class="pstat"><span class="pstat-n">2+</span><span class="pstat-l">Yil</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTS -->
+<section class="sec" id="certs">
+  <div class="sec-tag">01 — Sertifikatlar</div>
+  <h2 class="sec-title">Erishgan Sertifikatlarim</h2>
+  <p class="sec-sub">Kiber havfsizlik sohasida olingan rasmiy sertifikatlar va kurslar.</p>
+  <div class="grid-certs">
+
+    <!-- CERT 1 -->
+    <a class="cert-card" href="https://portswigger.net/web-security/e/c/bf6021c8a7030c23" target="_blank">
+      <div class="cert-img-wrap">
+        <img src="images/bscp.png" alt="BSCP sertifikati"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="cert-img-placeholder" style="display:none">
+        </div>
+        <div class="cert-link-badge">↗ Ko'rish</div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-name">BSCP</div>
+        <div class="cert-org">Burp Suite Certified Practitioner</div>
+        <div class="cert-footer">
+          <div class="chips"><span class="chip chip-g">Active</span></div>
+          <div class="cert-link-text"><span class="chip chip-p">2032</span></div>
+        </div>
+      </div>
+    </a>
+
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="sec-tag">02 — Bilimlar</div>
+  <h2 class="sec-title">Skill &amp; Tajriba</h2>
+  <p class="sec-sub">Kiber havfsizlik va dasturlash bo'yicha asosiy bilimlarim.</p>
+  <div class="skills-wrap">
+    <div class="skill-box">
+      <div class="skill-box-head">
+        <div class="skill-box-ico">🔍</div>
+        <div class="skill-box-title">Kiber Havfsizlik</div>
+      </div>
+      <div class="skill-row"><div class="skill-meta"><span>Web Penetration Testing</span><span>90%</span></div><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span>SQLi / XSS / SSRF</span><span>88%</span></div><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span>Burp Suite / OWASP</span><span>85%</span></div><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span>Game Cheating / Memory</span><span>80%</span></div><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span>Recon &amp; OSINT</span><span>85%</span></div><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+    </div>
+    <div class="skill-box">
+      <div class="skill-box-head">
+        <div class="skill-box-ico">💻</div>
+        <div class="skill-box-title">Dasturlash</div>
+      </div>
+      <div class="skill-row"><div class="skill-meta"><span>Python 2 / 3</span><span>90%</span></div><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span>C++</span><span>75%</span></div><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span>JavaScript</span><span>80%</span></div><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span>HTML &amp; CSS</span><span>85%</span></div><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HALL OF FAME -->
+<section class="sec" id="hof">
+  <div class="sec-tag">03 — Hall of Fame</div>
+  <h2 class="sec-title">Topilgan Zaifliklar</h2>
+  <p class="sec-sub">Responsibly disclosed — Bug Bounty va ruxsat bilan test qilingan saytlar.</p>
+  <div class="hof-wrap">
+    <table class="hof-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Platforma</th>
+          <th>Daraja</th>
+          <th>Holat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">01</td>
+          <td>mbank.kz</td>
+          <td><span class="sdot sc"></span>Critical</td>
+          <td><span class="chip chip-g">Fixed</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">02</td>
+          <td>notion.so</td>
+          <td><span class="sdot sc"></span>High</td>
+          <td><span class="chip chip-g">Fixed</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">03</td>
+          <td>cert.kz</td>
+          <td><span class="sdot sh"></span>High</td>
+          <td><span class="chip chip-g">Fixed</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">04</td>
+          <td>Toyota</td>
+          <td><span class="sdot sh"></span>High</td>
+          <td><span class="chip chip-y">Pending</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">05</td>
+          <td>egov.kz</td>
+          <td><span class="sdot sm"></span>Medium</td>
+          <td><span class="chip chip-g">Fixed</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- CVE -->
+<section class="sec" id="hof">
+  <div class="sec-tag">04 — CVE</div>
+  <h2 class="sec-title">Topilgan Zaifliklar</h2>
+  <p class="sec-sub">Responsibly disclosed — Bug Bounty va ruxsat bilan test qilingan saytlar.</p>
+  <div class="hof-wrap">
+    <table class="hof-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>Daraja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">01</td>
+          <td>CVE-2025-10747</td>
+          <td><span class="sdot sc"></span>High</td>
+        </tr>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">02</td>
+          <td>CVE-2026-2419</td>
+          <td><span class="sdot sc"></span>Low</td>
+        </tr>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">03</td>
+          <td>CVE-2026-2426</td>
+          <td><span class="sdot sh"></span>Medium</td>
+        </tr>
+        <tr>
+          <td style="color:var(--hint);font-size:0.78rem">04</td>
+          <td>CVE-2026-5463</td>
+          <td><span class="sdot sc"></span>High</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section class="sec" id="achievements">
+  <div class="sec-tag">05 — Yutuqlar</div>
+  <h2 class="sec-title">Erishgan Natijalarim</h2>
+  <p class="sec-sub">CTF, Bug Bounty va shaxsiy loyihalardagi muhim yutuqlar.</p>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <span class="ach-emoji">🏆</span>
+      <div class="ach-title">CTF 1-O'rin</div>
+      <div class="ach-desc">Musobaqada 1-o'rini egalladim. Web exploit, crypto va forensics kategoriyalari.</div>
+    </div>
+    <div class="ach-card">
+      <span class="ach-emoji">💰</span>
+      <div class="ach-title">Bug Bounty Award</div>
+      <div class="ach-desc">Katta kompaniyada kritik zaiflik topib, pul mukofotiga erishdim.</div>
+    </div>
+    <div class="ach-card">
+      <span class="ach-emoji">⭐</span>
+      <div class="ach-title">Open Source Tool</div>
+      <div class="ach-desc">Pentest uchun Python tool yozdim — GitHub'da ko'p star to'pladi.</div>
+    </div>
+    <div class="ach-card">
+      <span class="ach-emoji">🎮</span>
+      <div class="ach-title">Game Cheat Engine</div>
+      <div class="ach-desc">C++ bilan memory-based cheat dasturlari ishlab chiqdim.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STACK -->
+<section class="sec" id="stack">
+  <div class="sec-tag">06 — Tech Stack</div>
+  <h2 class="sec-title">Ishlatadigan Toollar</h2>
+  <p class="sec-sub">Kundalik ishimda foydalanadigan til va vositalar.</p>
+  <div class="stack-pills">
+    <div class="pill"><span>🐍</span> Python</div>
+    <div class="pill"><span>⚙️</span> C++</div>
+    <div class="pill"><span>🌐</span> JavaScript</div>
+    <div class="pill"><span>📄</span> HTML5</div>
+    <div class="pill"><span>🎨</span> CSS3</div>
+    <div class="pill"><span>🔍</span> Burp Suite</div>
+    <div class="pill"><span>🐉</span> Kali Linux</div>
+    <div class="pill"><span>🕷️</span> Metasploit</div>
+    <div class="pill"><span>🗄️</span> SQLmap</div>
+    <div class="pill"><span>🔎</span> Nmap</div>
+    <div class="pill"><span>📦</span> Git & GitHub</div>
+    <div class="pill"><span>🧠</span> Wireshark</div>
+    <div class="pill"><span>🎯</span> Ghidra</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="sec-tag">07 — Kontakt</div>
+  <h2 class="sec-title">Bog'lanish</h2>
+  <p class="sec-sub">Loyiha, hamkorlik yoki savol bo'lsa — xabar yozing.</p>
+  <div class="contact-grid">
+    <a href="https://github.com/Abdivasiyev2008" target="_blank" class="contact-card">
+      <div class="c-ico ci-gh"><img src="https://github.com/favicon.ico" alt="GitHub"></div>
+      <div><span class="c-name">GitHub</span><span class="c-handle">@Abdivasiyev2008</span></div>
+      <span class="c-arrow">↗</span>
+    </a>
+    <a href="https://t.me/@NotUser_001" target="_blank" class="contact-card">
+      <div class="c-ico ci-tg"><img src="https://t.me/favicon.ico" alt="Telegram"></div>
+      <div><span class="c-name">Telegram</span><span class="c-handle">@NotUser_001</span></div>
+      <span class="c-arrow">↗</span>
+    </a>
+    <a href="https://www.linkedin.com/in/sunnatillo-abdivasiyev-783672331/" target="_blank" class="contact-card">
+      <div class="c-ico ci-li"><img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn"></div>
+      <div><span class="c-name">LinkedIn</span><span class="c-handle">@sunnatillo</span></div>
+      <span class="c-arrow">↗</span>
+    </a>
+    <a href="https://www.instagram.com/abdivasiyevsunnatillo/" target="_blank" class="contact-card">
+      <div class="c-ico ci-ig"><img src="https://img.icons8.com/?size=100&id=32323&format=png&color=000000" alt="Instagram" style="width: 60px;"></div>
+      <div><span class="c-name">Instagram</span><span class="c-handle">@abdivasiyevsunnatillo/</span></div>
+      <span class="c-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<footer>Designed &amp; Built by <strong>Sunnatillo Abdivasiyev</strong> · 2026</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const items = e.target.querySelectorAll('.cert-card,.skill-box,.ach-card,.pill,.contact-card');
+    items.forEach((el, i) => {
+      el.style.cssText += `opacity:0;transform:translateY(18px);transition:opacity .5s ${i*0.055}s ease,transform .5s ${i*0.055}s ease`;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }));
+    });
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.sec').forEach(s => io.observe(s));
+</script>
+</body>
+</html>
